@@ -6,7 +6,7 @@ Edit pytorch upsampling.py refering https://iambeginnerdeveloper.tistory.com/183
 
 C:\Users\[username]\anaconda3\envs\bird\Lib\site-packages\pafy\backend_youtube_dl
 
-## Remove likes and dislikes lines 
+* Remove likes and dislikes lines 
 
 
 Understanding the 3D layout of a scene from a single perspective image is one of the fundamental problems in computer vision. The position of the camera next to the playground varies based on the focus point of the camera. However, with the advancement of technology and computer vision, we can modify the viewing experience from a fully 2D perspective to a near 3D experience included the top view that provides beneficial information to assess soccer players. In the following, it has been attempted to explain how to draw the bird's eye view of a soccer game.
