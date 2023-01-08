@@ -69,7 +69,7 @@ def main(opt):
     frame_num = 0
 
     # Black Image (Soccer Field)
-    bg_ratio = int(np.ceil(w/(3*115)))
+    bg_ratio = int(np.ceil(w/(4*115)))
     gt_img = cv2.imread('./inference/black.jpg')
     gt_img = cv2.resize(gt_img,(115*bg_ratio, 74*bg_ratio))
     gt_h, gt_w, _ = gt_img.shape
