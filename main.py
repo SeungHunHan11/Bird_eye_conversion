@@ -11,7 +11,9 @@ import cv2
 import numpy as np
 import sys
 import pafy
+import warnings
 
+warnings.filterwarnings("ignore")
 
 def main(opt):
     # Load models
@@ -37,12 +39,20 @@ def main(opt):
 
     # Save output
     if opt.save:
+
+
+
         output_name = opt.source.split('/')[-1]
         output_name = output_name.split('.')[0] + '_output.' + output_name.split('.')[-1]
 
-        output_path = os.path.join(os.getcwd(), 'inference/output')
+        output_path = os.path.join(os.getcwd(), 'inference','output')
         os.makedirs(output_path, exist_ok=True)
-        output_name = os.path.join(os.getcwd(), 'inference/output', output_name)
+
+        if opt.source.lower().startswith(('rtsp://', 'rtmp://', 'http://', 'https://')):
+            output_name = os.path.join(output_path, 'output.mp4')
+
+        else:
+            output_name = os.path.join(output_path, output_name)
 
         w = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
         h = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
@@ -100,7 +110,9 @@ def main(opt):
                 deep_sort.deepsort.increment_ages()
 
             frame[frame.shape[0]-bg_img.shape[0]:, frame.shape[1]-bg_img.shape[1]:] = bg_img  
-            
+
+            out.write(frame)
+
             if opt.view:
                 cv2.imshow('frame',frame)
                 if cv2.waitKey(1) & ord('q') == 0xFF:
@@ -129,10 +141,10 @@ def main(opt):
         )
 
     if opt.save:
-        print(f'\n\nOutput video has been saved in {output_path}!')
+        print(f'\n\nOutput video has been saved in {output_name}!')
 
 
-
+    out.release()
     cap.release()
     cv2.destroyAllWindows()
 
