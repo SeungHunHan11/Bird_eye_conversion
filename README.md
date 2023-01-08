@@ -25,6 +25,9 @@ Understanding the 3D layout of a scene from a single perspective image is one of
 ## Yolov5 for Object Detection
 Tracking an object and drawing the bird's eye view requires the installation of bounding boxes around the specified object in the image. Therefore, we must first identify the ball and player classes.
 
+Change configuration to `--yolov5-model weights/yolov5x.pt` to use yolov5x parameters, which provide more accurate, yet more time consuming results.
+
+
 We trained our [custom dataset](https://github.com/FootballAnalysis/footballanalysis/tree/main/Dataset/Object%20Detection%20Dataset) on [Yolov5](https://github.com/ultralytics/yolov5) for both the `player` and `ball` classes.
 - If you want to train our dataset from scratch or want to train on your dataset, please refer to [this site](https://github.com/ultralytics/yolov5/wiki/Train-Custom-Data) for more information.
 
