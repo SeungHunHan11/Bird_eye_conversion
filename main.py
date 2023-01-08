@@ -40,8 +40,6 @@ def main(opt):
     # Save output
     if opt.save:
 
-
-
         output_name = opt.source.split('/')[-1]
         output_name = output_name.split('.')[0] + '_output.' + output_name.split('.')[-1]
 
@@ -49,7 +47,13 @@ def main(opt):
         os.makedirs(output_path, exist_ok=True)
 
         if opt.source.lower().startswith(('rtsp://', 'rtmp://', 'http://', 'https://')):
-            output_name = os.path.join(output_path, 'output.mp4')
+            x = 1
+
+            while True:
+                output_name = os.path.join(output_path, 'output_'+str(x)+'.mp4')
+                if not os.path.exists(output_name):
+                    break
+                x+=1
 
         else:
             output_name = os.path.join(output_path, output_name)
